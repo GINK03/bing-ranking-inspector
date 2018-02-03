@@ -46,3 +46,30 @@ for name in glob.glob('mecab-ipadic-neologd/build/*/*.csv'):
      nouns.append(term)
 open('nouns.json', 'w').write( json.dumps(nouns, indent=2, ensure_ascii=False) )
 ```
+
+#### bingをスクレイピング
+```console
+$ python3 scrape.py
+```
+
+#### フルドメインが入っているリンクをパース
+```console
+$ python3 scan_pair.py
+```
+
+#### bingの結果からフルドメインをスクレイピング
+```console
+$ python3 pair_scrape.py
+```
+#### フルドメインのHTMLをパース
+```console
+$ python3 10-parse-htmls.py
+```
+#### 分かち書きして特徴量化
+```console
+$ python3 20-make-vector.py
+```
+#### 疎行列で表現してranksvm形式のファイルを出力
+```console
+$ python3 30-index.py
+```
