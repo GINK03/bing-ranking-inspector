@@ -20,7 +20,7 @@ def _map(arg):
 
   objs = []
   for term in terms:
-    for type in ["top", "tail"]:
+    for type in ["1", "2"]:
       try:
         html = ( open('bing-ranking-scrape/htmls/{term}_{type}'.format(term=term, type=type)).read() )
       except Exception as ex:
@@ -51,14 +51,14 @@ def _map(arg):
 
 args = {}
 for index, term in enumerate(terms):
-  key = index%12
+  key = index%16
   if args.get(key) is None:
     args[key] = []
   args[key].append(term)
 args = [ (key,terms) for key,terms in args.items() ]
 
 objs = []
-with concurrent.futures.ProcessPoolExecutor(max_workers=12) as exe:
+with concurrent.futures.ProcessPoolExecutor(max_workers=16) as exe:
   for _objs in exe.map(_map, args):
     for obj in _objs:
       objs.append(obj)

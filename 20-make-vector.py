@@ -11,6 +11,7 @@ for obj in objs:
   o = {}
   o["type"] = obj["type"]
   o["wakati"] = []
+  o["term"] = obj["term"]
 
   title = obj["title"] if obj["title"] else "none"
 

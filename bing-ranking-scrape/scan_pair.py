@@ -26,7 +26,9 @@ for name in glob.glob('terms/*'):
     r2url = obj[-1][3]
     r2 = obj[-1][1]
     print(term, r1url, r2url, r1, r2)
-    term_data[term] = (r1url, r2url, r1, r2)
+    
+    #term_data[term] = (r1url, r2url, r1, r2)
+
   if len(obj) > 2:
     term = obj[0][0]
     r1url = obj[0][3]

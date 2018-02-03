@@ -16,10 +16,9 @@ term_data = pickle.loads(open('term_data.pkl', 'rb').read())
 def _map(arg):
   term, data = arg
   try:
-
-    if len(data) == 3:
-      args = [(1, 0), (2, 1), (3, 0)]
-    else:
+    if len(data) == 6:
+      args = [(1, 0), (2, 1), (3, 2)]
+    elif len(data) == 4:
       args = [(1, 0), (2, 1)]
 
     for rank, index in args:
