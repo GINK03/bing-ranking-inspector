@@ -20,7 +20,7 @@ def _map(arg):
 
   objs = []
   for term in terms:
-    for type in ["1", "2"]:
+    for type in ["1", "2", "3"]:
       try:
         html = ( open('bing-ranking-scrape/htmls/{term}_{type}'.format(term=term, type=type)).read() )
       except Exception as ex:

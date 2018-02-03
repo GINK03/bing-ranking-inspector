@@ -2,34 +2,41 @@ import json
 
 from collections import Counter
 
-term_id = json.loads(open("term_id.json").read())
 wakatis = json.loads(open("wakatis.json").read())
 
-data = []
+query_data = {}
 for obj in wakatis:
   type = obj["type"]
   term = obj["term"]
 
-  if type == "top":
+  if type == "1":
     rank = 4
+  elif type == "2":
+    rank = 2
   else:
-    rank = 1
+    rank = 0
   wakati = dict(Counter(obj["wakati"]))
-  data.append( (term, rank, wakati) )
+  if query_data.get(term) is None:
+    query_data[term] = []
+  query_data[term].append( (rank, wakati) )
 
 term_index = {}
-for term, rank, wakati in data:
-  for term, freq in wakati.items():
-    if term_index.get(term) is None:
-      term_index[term] = 0
-    term_index[term] += 1
+for query, data in query_data.items():
+  for rank, wakati in data:
+    for term, freq in wakati.items():
+      if term_index.get(term) is None:
+        term_index[term] = 0
+      term_index[term] += 1
 
 open("term_index.json", "w").write( json.dumps(term_index, indent=2, ensure_ascii=False) )
 
-g = open("./rank/train.data", "w")
+fdata = open("./rank/train.data", "w")
+fgroup = open("./rank/train.group", "w")
 
-query = set()
-for term, rank, wakati in data:
-  line = " ".join( ["%d:%d"%(term_index[term], freq) for term, freq in wakati.items()] )
-  print(rank, line)
-  g.write( str(rank) + " " + "qid:%d"%(term_id[term]) +  " " + line + "\n" )
+for query, data in query_data.items():
+  size = len(data)
+  fgroup.write( '%d\n'%(size) )
+  for rank, wakati in data:
+    line = " ".join( ["%d:%d"%(term_index[term], freq) for term, freq in wakati.items()] )
+    print(rank, line)
+    fdata.write( str(rank) + " " + line + "\n" )
