@@ -28,3 +28,21 @@ ranksvmフォーマットはgroup fileというのが別途必要になってい
 - 言語処理的にtitle, meta, bodyの自然言語でランキングしてみる
 
 (本当はこれ+DeepLearningでやってもいい)
+
+## オペレーション
+
+### ランククエリ生成
+neologdなどからnoun（名詞）を取り出して、それを検索クエリ群にする  
+```python
+import glob
+import pickle                                                                                                                                                                                                     import json                                                                                                                                                                                        nouns = []
+for name in glob.glob('mecab-ipadic-neologd/build/*/*.csv'):
+   f = open(name)
+   for line in f:
+     ents = line.strip().split(',')
+     if '名詞' not in ents:
+       continue
+     term = ents[0]
+     nouns.append(term)
+open('nouns.json', 'w').write( json.dumps(nouns, indent=2, ensure_ascii=False) )
+```
