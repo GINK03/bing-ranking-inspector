@@ -58,7 +58,7 @@ ranksvmフォーマットはgroup fileというのが別途必要になってい
 
 ## オペレーション
 
-### ランククエリ生成
+### OP1. ランククエリ生成
 neologdなどからnoun（名詞）を取り出して、それを検索クエリ群にする  
 ```python
 import glob
@@ -74,29 +74,38 @@ for name in glob.glob('mecab-ipadic-neologd/build/*/*.csv'):
 open('nouns.json', 'w').write( json.dumps(nouns, indent=2, ensure_ascii=False) )
 ```
 
-#### bingをスクレイピング
+#### OP2. bingをスクレイピング
 ```console
 $ python3 scrape.py
 ```
 
-#### フルドメインが入っているリンクをパース
+#### OP3. フルドメインが入っているリンクをパース
 ```console
 $ python3 scan_pair.py
 ```
 
-#### bingの結果からフルドメインをスクレイピング
+#### OP4. bingの結果からフルドメインをスクレイピング
 ```console
 $ python3 pair_scrape.py
 ```
-#### フルドメインのHTMLをパース
+#### OP5. フルドメインのHTMLをパース
 ```console
 $ python3 10-parse-htmls.py
 ```
-#### 分かち書きして特徴量化
+#### OP6. 分かち書きして特徴量化
 ```console
 $ python3 20-make-vector.py
 ```
-#### 疎行列で表現してranksvm形式のファイルを出力
+#### OP7. 疎行列で表現してranksvm形式のファイルを出力 
 ```console
 $ python3 30-index.py
 ```
+
+#### 学習
+OP7を実行すると学習可能なファイル群が出力されます  
+(xgboostのバイナリがlibcなどの互換がなくて実行できない場合は、xgboostを再コンパイルしてください)  
+```console
+$ cd rank
+$ ./xgb mq_train.conf 
+```
+
