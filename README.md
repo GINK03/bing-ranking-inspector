@@ -108,4 +108,7 @@ OP7を実行すると学習可能なファイル群が出力されます
 $ cd rank
 $ ./xgb mq_train.conf 
 ```
+map(mean average precision)の略で、平均精度です。pairwiseで評価すると、mapでの評価になります。他の関数のndcgなどはうまく動作しません。なぜ？  
+
+
 
