@@ -101,7 +101,7 @@ $ python3 20-make-vector.py
 $ python3 30-index.py
 ```
 
-#### 学習
+## 学習
 OP7を実行すると学習可能なファイル群が出力されます  
 (xgboostのバイナリがlibcなどの互換がなくて実行できない場合は、xgboostを再コンパイルしてください)  
 ```console
@@ -109,6 +109,28 @@ $ cd rank
 $ ./xgb mq_train.conf 
 ```
 map(mean average precision)の略で、平均精度です。pairwiseで評価すると、mapでの評価になります。他の関数のndcgなどはうまく動作しません。なぜ？  
+
+1000roundでの精度はこの程度です  
+```console
+[20:36:05] src/tree/updater_prune.cc:74: tree pruning end, 1 roots, 936 extra nodes, 1252 pruned nodes, max_depth=36                                                                                 
+[20:36:05] [999]        test-map:0.721291        
+```
+
+学習が完了すると、**rank.model**というファイルが出力されます  
+
+## 予想
+**rank.model**をもちいて未知のクエリに対してランキングすることができます  
+```console
+$ ./xgb mq_predict.conf 
+[20:51:20] 144775x162216 matrix with 3899318 entries loaded from test.data
+[20:51:20] start prediction...
+[20:51:49] writing prediction to pred.txt
+```
+pred.txtの中にランキングされたファイルが記されています。  
+
+単純なSVMなどを利用すると、簡単に配信システムで計算できますが、勾配ブーストのようなランキングはどうなんですかね。決定木なのでC++のファイルなどに変換させるのが良いと思います  
+
+
 
 
 
