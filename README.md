@@ -1,6 +1,6 @@
 # ranking-inspector
 
-Microsoft Bingのランキングエンジンをシミュレートし、ランキングを学習します  
+[Microsoft Bing](https://www.bing.com/?cc=jp)のランキングエンジンをシミュレートし、ランキングを学習します  
 
 ## 目的
 
