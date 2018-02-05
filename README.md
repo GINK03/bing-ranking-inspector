@@ -31,8 +31,8 @@ Microsft Bingのランキングエンジンのクエリ(neologdに内在して�
 検索結果のランキングを見ることにより、同等のランキングエンジンが作成可能であると期待できます  
 
 ## ランキングアルゴリズム一覧
-- lambdarank
-- lambdamart
+- lambdarank, [lightgbmに実装あり](https://github.com/Microsoft/LightGBM/blob/master/examples/lambdarank/train.conf)
+- lambdamart, [xgboostに実装あり](https://xgboost.readthedocs.io/en/latest/faq.html#do-you-support-lambdamart)
 
 ## 読むべき論文
 - [From RankNet to LambdaRank to LambdaMART: An Overview](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/MSR-TR-2010-82.pdf)
