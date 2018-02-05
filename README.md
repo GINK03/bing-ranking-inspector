@@ -60,7 +60,7 @@ ranksvmフォーマットはgroup fileというのが別途必要になってい
 
 ## オペレーション
 
-### OP1. ランククエリ生成
+### Operation 1. ランククエリ生成
 neologdなどからnoun（名詞）を取り出して、それを検索クエリ群にする  
 ```python
 import glob
@@ -76,29 +76,29 @@ for name in glob.glob('mecab-ipadic-neologd/build/*/*.csv'):
 open('nouns.json', 'w').write( json.dumps(nouns, indent=2, ensure_ascii=False) )
 ```
 
-#### OP2. bingをスクレイピング
+#### Operation 2. bingをスクレイピング
 ```console
 $ python3 scrape.py
 ```
 
-#### OP3. フルドメインが入っているリンクをパース
+#### Operation 3. フルドメインが入っているリンクをパース
 ```console
 $ python3 scan_pair.py
 ```
 
-#### OP4. bingの結果からフルドメインをスクレイピング
+#### Operation 4. bingの結果からフルドメインをスクレイピング
 ```console
 $ python3 pair_scrape.py
 ```
-#### OP5. フルドメインのHTMLをパース
+#### Operation 5. フルドメインのHTMLをパース
 ```console
 $ python3 10-parse-htmls.py
 ```
-#### OP6. 分かち書きして特徴量化
+#### Operation 6. 分かち書きして特徴量化
 ```console
 $ python3 20-make-vector.py
 ```
-#### OP7. 疎行列で表現してranksvm形式のファイルを出力 
+#### Operation 7. 疎行列で表現してranksvm形式のファイルを出力 
 ```console
 $ python3 30-index.py
 ```
@@ -150,8 +150,12 @@ pred.txtの中にランキングされたファイルが記されています。
 
 単純なSVMなどを利用すると、簡単に配信システムで計算できますが、勾配ブーストのようなランキングはどうなんですかね。決定木なのでC++のファイルなどに変換させるのが良いと思います  
 
-## ランキング意外と便利だぞい
-ランキング学習はレコメンドエンジンとも深く結びついた技術でマネタイズのコアをなしうる重要なテクノロジーです。  
-判別などで自動化。。。と考える前にレコメンドも考えてもいいかもしれません。  
+## ランキング意外と便利だぞい  
+
+ランキング学習はレコメンドエンジンとも深く結びついた技術でマネタイズのコアをなしうる重要なテクノロジーです  
+
+AIで自動判別でなんかすごいのを作る前の前哨戦で、レコメンドはぜひとも検討に値するテクノロジーです　　
+
+
 
 
