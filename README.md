@@ -1,5 +1,7 @@
 # ranking-inspector
 
+Microsoft Bingのランキングエンジンをシミュレートし、ランキングを学習します  
+
 ## 目的
 
 **inspector(検査官、監査人、検閲官、視学、警視正、警部補)**  
