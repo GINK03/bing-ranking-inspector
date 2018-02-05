@@ -1,13 +1,8 @@
-# ranking-inspecre
+# ranking-inspector
 
 ## 目的
 
 **inspector(検査官、監査人、検閲官、視学、警視正、警部補)**  
-**spectre(ある複雑な量を単純な成分に分け、ある特定の量の大小によって分布を示したもの。)**  
-
-これらの造語です  
-
-Intel CPUなどに内在する投機実行のspectreとは用法が違いますのでご注意ください。  
 
 ランキングアルゴリズムは日々進化しています。Googleのサーチエンジンは[200以上の特徴量を用いたり](https://backlinko.com/google-ranking-factors)色々しています。  
 
@@ -28,7 +23,7 @@ Rankingエンジンのランクの傾向を、検索クエリ結果から、ラ�
 これを行うにあたって１つの制約があります。  
 - 1. ランキングエンジンのリバースエンジニアリングのような行為は認められるのか
 
-1. に関して述べると、この行為は、例えばGoogleやBingなどのサーチエンジンの競合を作るという意図がない、広域に解釈すれば、ビジネスでなければよいと言えそうである。自己研究に基づくのでこの項目に関しては問題がない。  
+1. に関して述べると、この行為は、例えばGoogleやBingなどのサーチエンジンの競合を作るという意図がない、広域に解釈すれば、ビジネスでなければよいと言えそうである。例えば今回は、自己研究に基づくので問題がない。  
 
 Microsft Bingのランキングエンジンのクエリ(neologdに内在している辞書を利用)することによって、膨大なダイバシティの検索結果が得られます。  
 検索結果のランキングを見ることにより、同等のランキングエンジンが作成可能であると期待できます  
@@ -67,7 +62,9 @@ ranksvmフォーマットはgroup fileというのが別途必要になってい
 neologdなどからnoun（名詞）を取り出して、それを検索クエリ群にする  
 ```python
 import glob
-import pickle                                                                                                                                                                                                     import json                                                                                                                                                                                        nouns = []
+import pickle
+import json 
+nouns = []
 for name in glob.glob('mecab-ipadic-neologd/build/*/*.csv'):
    f = open(name)
    for line in f:
