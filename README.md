@@ -39,6 +39,7 @@ Microsft Bingのランキングエンジンのクエリ(neologdに内在して�
 
 ## よく見る評価指標
 - [NDCG](https://en.wikipedia.org/wiki/Discounted_cumulative_gain)
+- [Mean Average Precision](http://petitviolet.hatenablog.com/entry/20110901/1314853107)
 
 ## 目的関数
 - [PairWise(xgb)](https://github.com/dmlc/xgboost/tree/master/demo/rank)
