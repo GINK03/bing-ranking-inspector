@@ -36,7 +36,7 @@ ftdata = open("./rank/test.data", "w")
 ftgroup = open("./rank/test.group", "w")
 import random
 for query, data in query_data.items():
-  if random.random() < 0.05:
+  if random.random() < 0.15:
     size = len(data)
     ftgroup.write( '%d\n'%(size) )
     for rank, wakati in data:
