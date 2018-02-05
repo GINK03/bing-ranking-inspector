@@ -42,7 +42,7 @@ def _map(arr):
       open('terms/{}.json'.format(term), 'w').write( json.dumps(data, indent=2, ensure_ascii=False) )
     except Exception as ex:
       print(ex)
-    time.sleep(1.0)
+    time.sleep(30.0)
 arrs = {}
 for index, term in enumerate(nouns):
   key = index%64
